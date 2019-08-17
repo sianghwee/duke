@@ -14,4 +14,4 @@ src/main/resources/docs/
 bin/
 
 # ignore class file created by users for testing purposes
-.class
+*.class
