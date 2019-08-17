@@ -12,9 +12,9 @@ public class Task {
     }
 
     public String toString() {
-        String output = "[✗]";
+        String output = "[X]";
         if (done)
-            output = "[✓]";
+            output = "[O]";
         return output + " " + this.description;
     }
 }
