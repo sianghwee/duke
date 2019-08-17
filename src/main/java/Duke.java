@@ -15,12 +15,20 @@ public class Duke {
     }
 
     public static void printList(ArrayList<Task> db) {
+        System.out.println("\t Here are the tasks in your list:");
         int index = 1;
         for (Task task : db) {
             String output = String.format("\t %d. %s", index, task.toString());
             System.out.println(output);
             index++;
         }
+    }
+
+    public static void updateTask(Task task) {
+        task.doneTask();
+        System.out.print("\t ");
+        System.out.println("Nice! I've marked this task as done:");
+        System.out.println("\t  " + task.toString());
     }
 
     public static void main(String[] args) {
@@ -35,13 +43,19 @@ public class Duke {
         System.out.println();
 
         String command;
-        while (!(command = sc.nextLine()).equals("bye")) {
+        while (!(command = sc.next()).equals("bye")) {
             printLine();
             switch (command) {
             case "list":
                 printList(db);
                 break;
+            case "done":
+                int index = sc.nextInt();
+                Task selectedTask = db.get(index - 1);
+                updateTask(selectedTask);
+                break;
             default:
+                command = command + sc.nextLine();
                 db.add(new Task(command));
                 System.out.println("\t added: " + command);
             }
