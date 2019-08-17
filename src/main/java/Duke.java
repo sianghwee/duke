@@ -14,10 +14,10 @@ public class Duke {
         System.out.println("\t" + line);
     }
 
-    public static void printList(ArrayList<String> db) {
+    public static void printList(ArrayList<Task> db) {
         int index = 1;
-        for (String s : db) {
-            String output = String.format("\t %d. %s", index, s);
+        for (Task task : db) {
+            String output = String.format("\t %d. %s", index, task.toString());
             System.out.println(output);
             index++;
         }
@@ -26,7 +26,7 @@ public class Duke {
     public static void main(String[] args) {
         printLogo();
         Scanner sc = new Scanner(System.in);
-        ArrayList<String> db = new ArrayList<>();
+        ArrayList<Task> db = new ArrayList<>();
 
         printLine();
         System.out.println("\t Hello! I'm Duke");
@@ -42,7 +42,7 @@ public class Duke {
                 printList(db);
                 break;
             default:
-                db.add(command);
+                db.add(new Task(command));
                 System.out.println("\t added: " + command);
             }
             printLine();
