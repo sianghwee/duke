@@ -40,6 +40,20 @@ public class Duke {
         System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
     }
 
+    public static String getDescription(Scanner sc) throws InvalidDescription {
+        String description = sc.nextLine().trim();
+        if (description.length() == 0)
+            throw new InvalidDescription();
+        return description;
+    }
+
+    public static String[] splitDescription(String description) throws InsufficientArgument {
+        String[] split = description.split("/");
+        if (split.length < 2)
+            throw new InsufficientArgument();
+        return split;
+    }
+
     public static void main(String[] args) {
         printLogo();
         Scanner sc = new Scanner(System.in);
@@ -55,29 +69,39 @@ public class Duke {
         String[] split;
         while (!(command = sc.next()).equals("bye")) {
             printLine();
-            switch (command) {
-            case "list":
-                printList();
-                break;
-            case "done":
-                int index = sc.nextInt();
-                Task selectedTask = db.get(index - 1);
-                updateTask(selectedTask);
-                break;
-            case "todo":
-                description = sc.nextLine().trim();
-                updateList(new Todo(description));
-                break;
-            case "deadline":
-                description = sc.nextLine().trim();
-                split = description.split("/");
-                updateList(new Deadline(split[0], split[1]));
-                break;
-            case "event":
-                description = sc.nextLine().trim();
-                split = description.split("/");
-                updateList(new Event(split[0], split[1]));
-                break;
+            try {
+                switch (command) {
+                case "list":
+                    printList();
+                    break;
+                case "done":
+                    int index = sc.nextInt();
+                    Task selectedTask = db.get(index - 1);
+                    updateTask(selectedTask);
+                    break;
+                case "todo":
+                    description = getDescription(sc);
+                    updateList(new Todo(description));
+                    break;
+                case "deadline":
+                    description = getDescription(sc);
+                    split = splitDescription(description);
+                    updateList(new Deadline(split[0], split[1]));
+                    break;
+                case "event":
+                    description = getDescription(sc);
+                    split = splitDescription(description);
+                    updateList(new Event(split[0], split[1]));
+                    break;
+                default:
+                    throw new InvalidCommand();
+                }
+            } catch (InvalidDescription e) {
+                System.out.println(String.format("\t OOPS!!! The description of a %s cannot be empty.", command));
+            } catch (InsufficientArgument e) {
+                System.out.println(String.format("\t OOPS!!! %s requires a time.", command));
+            } catch (InvalidCommand e) {
+                System.out.println("\t OOPS!!! I'm sorry, but I don't know what that means.");
             }
             printLine();
             System.out.println();
