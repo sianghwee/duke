@@ -75,7 +75,7 @@ public class Duke {
         String description;
         String[] split;
         int index;
-        while (!(command = sc.next()).equals("bye")) {
+        while (sc.hasNext() && !(command = sc.next()).equals("bye")) {
             printLine();
             try {
                 switch (command) {
