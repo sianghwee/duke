@@ -40,6 +40,13 @@ public class Duke {
         System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
     }
 
+    public static void removeTask(int index) {
+        Task removed = db.remove(index);
+        System.out.println("\t Noted. I've removed this task:");
+        System.out.println("\t  " + removed);
+        System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
+    }
+
     public static String getDescription(Scanner sc) throws InvalidDescription {
         String description = sc.nextLine().trim();
         if (description.length() == 0)
@@ -67,6 +74,7 @@ public class Duke {
         String command;
         String description;
         String[] split;
+        int index;
         while (!(command = sc.next()).equals("bye")) {
             printLine();
             try {
@@ -75,7 +83,7 @@ public class Duke {
                     printList();
                     break;
                 case "done":
-                    int index = sc.nextInt();
+                    index = sc.nextInt();
                     Task selectedTask = db.get(index - 1);
                     updateTask(selectedTask);
                     break;
@@ -92,6 +100,10 @@ public class Duke {
                     description = getDescription(sc);
                     split = splitDescription(description);
                     updateList(new Event(split[0], split[1]));
+                    break;
+                case "delete":
+                    index = sc.nextInt() - 1;
+                    removeTask(index);
                     break;
                 default:
                     throw new InvalidCommand();
