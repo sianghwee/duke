@@ -11,6 +11,14 @@ public class Task {
         this.done = true;
     }
 
+    public String toText() {
+        String output = "0";
+        if (done) {
+            output = "1";
+        }
+        return output + "|" + this.description;
+    }
+
     public String toString() {
         String output = "[X]";
         if (done)
