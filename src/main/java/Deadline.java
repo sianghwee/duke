@@ -8,6 +8,10 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    public String toText() {
+        return "D|" + super.toText() + "|" + String.join(" ", this.deadline.split(": "));
+    }
+
     public String toString() {
         return "[D]" + super.toString() + String.format("(%s)", this.deadline);
     }

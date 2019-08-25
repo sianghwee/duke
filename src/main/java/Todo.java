@@ -3,6 +3,10 @@ public class Todo extends Task {
         super(description);
     }
 
+    public String toText() {
+        return "T|" + super.toText();
+    }
+
     public String toString() {
         return "[T]" + super.toString();
     }

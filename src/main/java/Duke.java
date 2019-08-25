@@ -1,9 +1,78 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Duke {
 
     private static ArrayList<Task> db = new ArrayList<>();
+
+    public static File getDbFile(String filename) {
+        // Get the path of the current working directory
+        String currDirPath = System.getProperty("user.dir");
+
+        // Creates a new directory to store all the files if it does not exist
+        String dbDirPath = currDirPath + "/db";
+        File dbDir = new File(dbDirPath);
+        if (!dbDir.exists()) {
+            dbDir.mkdir();
+        }
+
+        // Creates a new text file within the database directory if it does not exist
+        File dbFile = new File(dbDir, filename);
+        try {
+            dbFile.createNewFile();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        return dbFile;
+    }
+
+    public static Task textToTask(String text) {
+        String[] textComponent = text.split("\\|");
+        // System.out.println(textComponent.length);
+        Task newTask = null;
+        switch (textComponent[0]) {
+        case "T":
+            newTask = new Todo(textComponent[2]);
+            break;
+        case "D":
+            newTask = new Deadline(textComponent[2], textComponent[3]);
+            break;
+        case "E":
+            newTask = new Event(textComponent[2], textComponent[3]);
+            break;
+        }
+        if (textComponent[1].equals("1")) {
+            newTask.doneTask();
+        }
+        System.out.println(newTask.toText());
+        return newTask;
+    }
+
+    public static void loadTasks(String filename) {
+        File dbFile = getDbFile(filename);
+
+        try {
+            BufferedReader readData = new BufferedReader(new FileReader(dbFile));
+            String input;
+            try {
+                while ((input = readData.readLine()) != null) {
+                    db.add(textToTask(input));
+                }
+                readData.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
+    }
 
     public static void printLine() {
         String line = "____________________________________________________________";
@@ -55,8 +124,26 @@ public class Duke {
         return split;
     }
 
+    public static void updateDb(String filename) {
+        File dbFile = getDbFile(filename);
+        try {
+            BufferedWriter writeData = new BufferedWriter(new FileWriter(dbFile));
+            for (Task t : db) {
+                writeData.write(t.toText());
+                writeData.newLine();
+            }
+            // writeData.write("test");
+            // writeData.newLine();
+            writeData.flush();
+            writeData.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        loadTasks("test.txt");
 
         printLine();
         System.out.println("\t Hello! I'm Duke");
@@ -108,6 +195,7 @@ public class Duke {
             } catch (InvalidCommand e) {
                 System.out.println("\t OOPS!!! I'm sorry, but I don't know what that means.");
             }
+            updateDb("test.txt");
             printLine();
             System.out.println();
         }
