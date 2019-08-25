@@ -5,3 +5,5 @@ T|1|join sports club
 T|0|borrow book
 D|0|return book |by Sunday
 E|0|project meeting |at Mon 2-4pm
+D|0|return book |by 2nd of December 2019, 6.00pm
+D|0|return book |by 2/12/2019

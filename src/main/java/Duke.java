@@ -118,9 +118,16 @@ public class Duke {
     }
 
     public static String[] splitDescription(String description) throws InsufficientArgument {
-        String[] split = description.split("/");
-        if (split.length < 2)
+        String[] split = description.split("/", 2);
+        if (split.length < 2) {
             throw new InsufficientArgument();
+        }
+        if (split[1].split(" |/").length == 5) {
+            String[] temp = split[1].split(" ", 2);
+            DukeDate dd = new DukeDate(temp[1]);
+            temp[1] = dd.toString();
+            split[1] = String.join(" ", temp);
+        }
         return split;
     }
 
