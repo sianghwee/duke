@@ -51,7 +51,6 @@ public class Duke {
         if (textComponent[1].equals("1")) {
             newTask.doneTask();
         }
-        System.out.println(newTask.toText());
         return newTask;
     }
 
@@ -139,8 +138,6 @@ public class Duke {
                 writeData.write(t.toText());
                 writeData.newLine();
             }
-            // writeData.write("test");
-            // writeData.newLine();
             writeData.flush();
             writeData.close();
         } catch (IOException e) {
