@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Ui {
+public class Ui {
     public void printLine() {
         String line = "____________________________________________________________";
         System.out.println("\t" + line);
@@ -37,6 +37,16 @@ class Ui {
         System.out.print("\t ");
         System.out.println("Nice! I've marked this task as done:");
         System.out.println("\t  " + task.toString());
+    }
+
+    public void addMessage(Task task, TaskList db) {
+        System.out.println("\t Got it. I've added this task:");
+        System.out.println("\t  " + task);
+        System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
+    }
+
+    public void errorMessage(DukeException e) {
+        System.out.println("\t " + e.toString());
     }
 
     public void byeMessage() {
