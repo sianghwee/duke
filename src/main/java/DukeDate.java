@@ -57,6 +57,6 @@ class DukeDate {
         String year = dateComponent[2];
         int time = Integer.parseInt(dateComponent[3]);
 
-        return String.format("%s of %s %s, %s", getDate(date), getMonth(month), dateComponent[2], getTime(time));
+        return String.format("%s of %s %s, %s", getDate(date), getMonth(month), year, getTime(time));
     }
 }
