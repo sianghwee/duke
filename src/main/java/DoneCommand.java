@@ -9,5 +9,6 @@ class DoneCommand implements Command {
         Task t = tasks.getTask(index);
         t.doneTask();
         ui.updateMessage(t);
+        storage.write(tasks);
     }
 }
