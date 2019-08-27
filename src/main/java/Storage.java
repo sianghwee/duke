@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 class Storage {
     private File dbFile;
@@ -46,6 +48,20 @@ class Storage {
             System.out.println(e);
         }
         return db;
+    }
+
+    public void write(TaskList db) {
+        try {
+            BufferedWriter writeData = new BufferedWriter(new FileWriter(dbFile));
+            for (Task t : db.getList()) {
+                writeData.write(t.toText());
+                writeData.newLine();
+            }
+            writeData.flush();
+            writeData.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     private static Task textToTask(String text) {
