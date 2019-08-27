@@ -8,7 +8,7 @@ public class Ui {
 
     public void welcome() {
         this.printLine();
-        System.out.println("\t Hello, I'm Sapu!");
+        System.out.println("\t Hello, I'm Duke!");
         System.out.println("\t What can I do for you?");
         this.printLine();
     }
