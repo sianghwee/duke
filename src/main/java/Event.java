@@ -1,7 +1,7 @@
 public class Event extends Task {
     private String time;
 
-    public Event(String description, String time) {
+    public Event(String description, String time) throws ArrayIndexOutOfBoundsException {
         super(description);
         String[] temp = time.split(" ", 2);
         time = temp[0] + ": " + temp[1];
