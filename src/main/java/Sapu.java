@@ -1,4 +1,4 @@
-class Sapu {
+public class Sapu {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
