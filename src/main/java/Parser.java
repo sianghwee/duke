@@ -1,9 +1,19 @@
 package duke.parser;
 
-import duke.command.*;
-import duke.exception.*;
+import duke.command.AddCommand;
+import duke.command.Command;
+import duke.command.DeleteCommand;
+import duke.command.ErrorCommand;
+import duke.command.ListCommand;
+import duke.command.DoneCommand;
 import duke.date.DukeDate;
-import duke.task.*;
+import duke.exception.InsufficientArgument;
+import duke.exception.InvalidCommand;
+import duke.exception.InvalidDescription;
+import duke.exception.MissingPreposition;
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Todo;
 
 public class Parser {
     public static Command parse(String fullCommand) {

@@ -3,7 +3,8 @@ package duke.ui;
 import java.util.Scanner;
 
 import duke.exception.DukeException;
-import duke.task.*;
+import duke.task.TaskList;
+import duke.task.Task;
 
 public class Ui {
     public void printLine() {
