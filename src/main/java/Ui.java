@@ -1,4 +1,9 @@
+package duke.ui;
+
 import java.util.Scanner;
+
+import duke.exception.DukeException;
+import duke.task.*;
 
 public class Ui {
     public void printLine() {

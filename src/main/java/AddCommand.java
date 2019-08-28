@@ -1,4 +1,11 @@
-class AddCommand implements Command {
+package duke.command;
+
+import duke.storage.Storage;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.ui.Ui;
+
+public class AddCommand implements Command {
     private Task task;
 
     public AddCommand(Task task) {

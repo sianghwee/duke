@@ -1,3 +1,5 @@
+package duke.exception;
+
 public class MissingPreposition extends DukeException {
 
     private String command;

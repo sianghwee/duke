@@ -1,6 +1,8 @@
+package duke.date;
+
 import java.text.DateFormatSymbols;
 
-class DukeDate {
+public class DukeDate {
     private String dateString;
 
     public DukeDate(String dateString) {

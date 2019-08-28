@@ -1,13 +1,21 @@
+package duke.storage;
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
-class Storage {
+import duke.task.Deadline;
+import duke.task.Event;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.task.Todo;
+
+public class Storage {
     private File dbFile;
 
     public Storage(String filename) {

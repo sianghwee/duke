@@ -1,4 +1,11 @@
-class DoneCommand implements Command {
+package duke.command;
+
+import duke.storage.Storage;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.ui.Ui;
+
+public class DoneCommand implements Command {
     private int index;
 
     public DoneCommand(int index) {

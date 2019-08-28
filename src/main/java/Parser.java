@@ -1,3 +1,10 @@
+package duke.parser;
+
+import duke.command.*;
+import duke.exception.*;
+import duke.date.DukeDate;
+import duke.task.*;
+
 public class Parser {
     public static Command parse(String fullCommand) {
         String[] split = fullCommand.split(" ", 2);

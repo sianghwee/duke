@@ -1,4 +1,11 @@
-class DeleteCommand implements Command {
+package duke.command;
+
+import duke.storage.Storage;
+import duke.task.Task;
+import duke.task.TaskList;
+import duke.ui.Ui;
+
+public class DeleteCommand implements Command {
     private int index;
 
     public DeleteCommand(int index) {

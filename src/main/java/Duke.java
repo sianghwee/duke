@@ -1,3 +1,9 @@
+import duke.command.Command;
+import duke.task.TaskList;
+import duke.storage.Storage;
+import duke.ui.Ui;
+import duke.parser.Parser;
+
 public class Duke {
     private Storage storage;
     private TaskList tasks;
@@ -23,6 +29,5 @@ public class Duke {
 
     public static void main(String[] args) {
         new Duke("test.txt").run();
-
     }
 }

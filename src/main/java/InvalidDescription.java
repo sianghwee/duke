@@ -1,4 +1,6 @@
-class InvalidDescription extends DukeException {
+package duke.exception;
+
+public class InvalidDescription extends DukeException {
     private String command;
 
     public InvalidDescription(String command) {
