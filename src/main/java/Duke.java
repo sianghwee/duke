@@ -3,7 +3,7 @@ public class Duke {
     private TaskList tasks;
     private Ui ui;
 
-    public Sapu(String filename) {
+    public Duke(String filename) {
         ui = new Ui();
         storage = new Storage(filename);
         tasks = new TaskList(storage.load());
@@ -22,7 +22,7 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        new Sapu("test.txt").run();
+        new Duke("test.txt").run();
 
     }
 }
