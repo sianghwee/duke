@@ -6,6 +6,7 @@ import duke.command.DeleteCommand;
 import duke.command.ErrorCommand;
 import duke.command.ListCommand;
 import duke.command.DoneCommand;
+import duke.command.FindCommand;
 import duke.date.DukeDate;
 import duke.exception.InsufficientArgument;
 import duke.exception.InvalidCommand;
@@ -63,6 +64,13 @@ public class Parser {
                 return new ErrorCommand(e);
             } catch (ArrayIndexOutOfBoundsException e) {
                 return new ErrorCommand(new MissingPreposition(split[0]));
+            }
+        case "find":
+            try {
+                verifyDescription(split, 2);
+                return new FindCommand(split[1]);
+            } catch (InvalidDescription e) {
+                return new ErrorCommand(e);
             }
         default:
             return new ErrorCommand(new InvalidCommand());

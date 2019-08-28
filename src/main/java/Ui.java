@@ -1,6 +1,7 @@
 package duke.ui;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import duke.exception.DukeException;
 import duke.task.TaskList;
@@ -59,5 +60,15 @@ public class Ui {
         printLine();
         System.out.println("\t Bye. Hope to see you again soon!");
         printLine();
+    }
+
+    public void searchMessage(ArrayList<Task> db) {
+        System.out.println("\t Here are the matching tasks in your list:");
+        int index = 1;
+        for (Task task : db) {
+            String output = String.format("\t %d. %s", index, task.toString());
+            System.out.println(output);
+            index++;
+        }
     }
 }
