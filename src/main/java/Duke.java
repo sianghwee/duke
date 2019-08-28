@@ -1,8 +1,8 @@
 import duke.command.Command;
-import duke.task.TaskList;
-import duke.storage.Storage;
-import duke.ui.Ui;
 import duke.parser.Parser;
+import duke.storage.Storage;
+import duke.task.TaskList;
+import duke.ui.Ui;
 
 /**
  * Represents a instance of Duke which is the main driver of the program
