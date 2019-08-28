@@ -2,14 +2,22 @@ package duke.date;
 
 import java.text.DateFormatSymbols;
 
+/**
+ * Represents a date that can be recognized by the program
+ */
 public class DukeDate {
     private String dateString;
 
+    /**
+     * Creates a DukeDate object by taking in a string of format dd/mm/yyyy hhmm
+     * 
+     * @param dateString a string of the format dd/mm/yyyy hhmm
+     */
     public DukeDate(String dateString) {
         this.dateString = dateString;
     }
 
-    public String getMonth(int month) {
+    private String getMonth(int month) {
         return new DateFormatSymbols().getMonths()[month - 1];
     }
 
@@ -31,7 +39,7 @@ public class DukeDate {
         return date + output;
     }
 
-    public String getTime(int time) {
+    private String getTime(int time) {
         String output;
 
         if (time >= 1200) {
@@ -52,6 +60,10 @@ public class DukeDate {
 
     }
 
+    /**
+     * Returns the date object as a string object in the form (date of month year,
+     * hour min)
+     */
     public String toString() {
         String[] dateComponent = dateString.split("/| ");
         int date = Integer.parseInt(dateComponent[0]);

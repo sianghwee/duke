@@ -15,9 +15,17 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.task.Todo;
 
+/** Represents the storage class that is used to read and write from a file */
 public class Storage {
     private File dbFile;
 
+    /**
+     * Create a storage object to read and write from the specified file. If the
+     * directory is not found, the dirctory will be created. If the specified file
+     * is not found, an empty file will be created.
+     * 
+     * @param filename the filename of the file to read from and write to
+     */
     public Storage(String filename) {
         String currDirPath = System.getProperty("user.dir");
 
@@ -39,6 +47,11 @@ public class Storage {
         this.dbFile = dbFile;
     }
 
+    /**
+     * Loads the data from the database file into a ArrayList
+     * 
+     * @return an ArrayList of tasks containing all the data converted to tasks
+     */
     public ArrayList<Task> load() {
         ArrayList<Task> db = new ArrayList<>();
         try {
@@ -58,6 +71,11 @@ public class Storage {
         return db;
     }
 
+    /**
+     * Writes the data from a tasklist to the file.
+     * 
+     * @param db the tasklist containing all the existing tasks
+     */
     public void write(TaskList db) {
         try {
             BufferedWriter writeData = new BufferedWriter(new FileWriter(dbFile));
