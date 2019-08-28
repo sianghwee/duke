@@ -15,7 +15,17 @@ import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Todo;
 
+/**
+ * Represents a parser class that is able to parse the string commands into
+ * actual commands
+ */
 public class Parser {
+    /**
+     * Process a string command and return back a command object
+     * 
+     * @param fullCommand the full command that the user inputs in string
+     * @return a command which could be executed
+     */
     public static Command parse(String fullCommand) {
         String[] split = fullCommand.split(" ", 2);
         switch (split[0]) {

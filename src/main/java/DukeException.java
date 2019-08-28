@@ -1,4 +1,7 @@
 package duke.exception;
 
-public class DukeException extends Exception {
+/**
+ * An abstract class as a general DukeException
+ */
+public abstract class DukeException extends Exception {
 }
