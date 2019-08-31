@@ -1,5 +1,7 @@
 package duke.task;
 
+import duke.exception.MissingPreposition;
+
 /**
  * Represent a deadline object to be created. Extends from the Task class.
  */
@@ -13,14 +15,17 @@ public class Deadline extends Task {
      * 
      * @param description the description of the task
      * @param deadline    the time in which the task needs to be completed
-     * @throws ArrayIndexOutOfBoundsException if time does not contain a preposition
-     *                                        by
+     * @throws MissingPreposition if time does not contain a preposition by
      */
-    public Deadline(String description, String deadline) throws ArrayIndexOutOfBoundsException {
+    public Deadline(String description, String deadline) throws MissingPreposition {
         super(description);
         String[] temp = deadline.split(" ", 2);
-        deadline = temp[0] + ": " + temp[1];
-        this.deadline = deadline;
+        try {
+            deadline = temp[0] + ": " + temp[1];
+            this.deadline = deadline;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new MissingPreposition("deadline");
+        }
     }
 
     /**
