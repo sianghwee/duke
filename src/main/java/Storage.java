@@ -9,15 +9,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import duke.exception.CorruptedData;
+import duke.exception.DukeException;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 import duke.task.TaskList;
 import duke.task.Todo;
+import duke.ui.Ui;
 
 /** Represents the storage class that is used to read and write from a file. */
 public class Storage {
     private File dbFile;
+    private Ui ui = new Ui();
 
     /**
      * Create a storage object to read and write from the specified file. If the
@@ -59,7 +63,11 @@ public class Storage {
             String input;
             try {
                 while ((input = readData.readLine()) != null) {
-                    db.add(textToTask(input));
+                    try {
+                        db.add(textToTask(input));
+                    } catch (DukeException e) {
+                        ui.errorMessage(e);
+                    }
                 }
                 readData.close();
             } catch (IOException e) {
@@ -90,7 +98,7 @@ public class Storage {
         }
     }
 
-    private static Task textToTask(String text) {
+    private static Task textToTask(String text) throws DukeException {
         String[] textComponent = text.split("\\|");
         Task newTask = null;
         switch (textComponent[0]) {
@@ -104,8 +112,7 @@ public class Storage {
             newTask = new Event(textComponent[2], textComponent[3]);
             break;
         default:
-            // Should throw a message where the input is not recognized
-            break;
+            throw new CorruptedData(text);
         }
         if (textComponent[1].equals("1")) {
             newTask.doneTask();
