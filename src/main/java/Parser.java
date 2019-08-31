@@ -8,6 +8,7 @@ import duke.command.ErrorCommand;
 import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.date.DukeDate;
+import duke.exception.DukeException;
 import duke.exception.InsufficientArgument;
 import duke.exception.InvalidCommand;
 import duke.exception.InvalidDescription;
@@ -29,61 +30,42 @@ public class Parser {
      */
     public static Command parse(String fullCommand) {
         String[] split = fullCommand.split(" ", 2);
-        switch (split[0]) {
-        case "list":
-            return new ListCommand();
-        case "delete":
-            try {
-                return new DeleteCommand(Integer.parseInt(split[1]));
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return new ErrorCommand(new InsufficientArgument());
-            }
-        case "done":
-            try {
-                return new DoneCommand(Integer.parseInt(split[1]));
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return new ErrorCommand(new InsufficientArgument());
-            }
-        case "todo":
-            try {
+        String[] desc;
+        try {
+            switch (split[0]) {
+            case "list":
+                return new ListCommand();
+            case "delete":
+                try {
+                    return new DeleteCommand(Integer.parseInt(split[1]));
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new InsufficientArgument();
+                }
+            case "done":
+                try {
+                    return new DoneCommand(Integer.parseInt(split[1]));
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new InsufficientArgument();
+                }
+            case "todo":
                 verifyDescription(split, 2);
                 return new AddCommand(new Todo(split[1]));
-            } catch (InvalidDescription e) {
-                return new ErrorCommand(e);
-            }
-        case "event":
-            try {
+            case "event":
                 verifyDescription(split, 2);
-                String[] desc = splitDescription(split[1]);
+                desc = splitDescription(split[1]);
                 return new AddCommand(new Event(desc[0], desc[1]));
-            } catch (InvalidDescription e) {
-                return new ErrorCommand(e);
-            } catch (InsufficientArgument e) {
-                return new ErrorCommand(e);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return new ErrorCommand(new MissingPreposition(split[0]));
-            }
-        case "deadline":
-            try {
+            case "deadline":
                 verifyDescription(split, 2);
-                String[] desc = splitDescription(split[1]);
+                desc = splitDescription(split[1]);
                 return new AddCommand(new Deadline(desc[0], desc[1]));
-            } catch (InvalidDescription e) {
-                return new ErrorCommand(e);
-            } catch (InsufficientArgument e) {
-                return new ErrorCommand(e);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                return new ErrorCommand(new MissingPreposition(split[0]));
-            }
-        case "find":
-            try {
+            case "find":
                 verifyDescription(split, 2);
                 return new FindCommand(split[1]);
-            } catch (InvalidDescription e) {
-                return new ErrorCommand(e);
+            default:
+                throw new InvalidCommand();
             }
-        default:
-            return new ErrorCommand(new InvalidCommand());
+        } catch (DukeException e) {
+            return new ErrorCommand(e);
         }
     }
 
