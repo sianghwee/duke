@@ -15,7 +15,7 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.task.Todo;
 
-/** Represents the storage class that is used to read and write from a file */
+/** Represents the storage class that is used to read and write from a file. */
 public class Storage {
     private File dbFile;
 
@@ -48,7 +48,7 @@ public class Storage {
     }
 
     /**
-     * Loads the data from the database file into a ArrayList
+     * Loads the data from the database file into a ArrayList.
      * 
      * @return an ArrayList of tasks containing all the data converted to tasks
      */
@@ -102,6 +102,9 @@ public class Storage {
             break;
         case "E":
             newTask = new Event(textComponent[2], textComponent[3]);
+            break;
+        default:
+            // Should throw a message where the input is not recognized
             break;
         }
         if (textComponent[1].equals("1")) {

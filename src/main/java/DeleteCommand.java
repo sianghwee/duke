@@ -12,7 +12,7 @@ public class DeleteCommand implements Command {
     private int index;
 
     /**
-     * Creates a command to delete the specified task from the list
+     * Creates a command to delete the specified task from the list.
      * 
      * @param index integer value of the task index in the list
      */

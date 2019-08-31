@@ -9,11 +9,11 @@ import duke.task.Task;
 
 /**
  * Represent the Ui object that is used for the user interaction i.e. the input
- * and the output from the program
+ * and the output from the program.
  */
 public class Ui {
     /**
-     * Prints a horizontal line
+     * Prints a horizontal line.
      */
     public void printLine() {
         String line = "____________________________________________________________";
@@ -21,7 +21,7 @@ public class Ui {
     }
 
     /**
-     * Prints the welcome message between two horizontal lines
+     * Prints the welcome message between two horizontal lines.
      */
     public void welcome() {
         this.printLine();
@@ -31,7 +31,7 @@ public class Ui {
     }
 
     /**
-     * Prints the list of tasks within a tasklist
+     * Prints the list of tasks within a tasklist.
      * 
      * @param db the tasklist which contains all the tasks
      */
@@ -46,7 +46,7 @@ public class Ui {
     }
 
     /**
-     * Reads the command from the user input and return it to the parser
+     * Reads the command from the user input and return it to the parser.
      * 
      * @return a string containing all the user's command
      */
@@ -55,7 +55,7 @@ public class Ui {
     }
 
     /**
-     * Print the message when a task is deleted from the task list
+     * Print the message when a task is deleted from the task list.
      * 
      * @param task the task that is deleted
      * @param db   the tasklist where the task is deleted from
@@ -67,7 +67,7 @@ public class Ui {
     }
 
     /**
-     * Prints the message when a task is marked as done
+     * Prints the message when a task is marked as done.
      * 
      * @param task the task that is to be mark as done
      */
@@ -78,7 +78,7 @@ public class Ui {
     }
 
     /**
-     * Prints the message when a task is added to the tasklist
+     * Prints the message when a task is added to the tasklist.
      * 
      * @param task the task that is to be added to the tasklist
      * @param db   the tasklist that contains all the tasks
@@ -90,7 +90,7 @@ public class Ui {
     }
 
     /**
-     * Prints the error message when an exception is faced
+     * Prints the error message when an exception is faced.
      * 
      * @param e the exception that is faced
      */
@@ -99,7 +99,7 @@ public class Ui {
     }
 
     /**
-     * Prints the bye message when the user leaves the program between two line
+     * Prints the bye message when the user leaves the program between two line.
      */
     public void byeMessage() {
         printLine();
@@ -107,6 +107,11 @@ public class Ui {
         printLine();
     }
 
+    /**
+     * Prints the message when the tasks are found.
+     * 
+     * @param db the list which the tasks are to be searched from
+     */
     public void searchMessage(ArrayList<Task> db) {
         System.out.println("\t Here are the matching tasks in your list:");
         int index = 1;

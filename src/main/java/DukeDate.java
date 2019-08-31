@@ -3,13 +3,13 @@ package duke.date;
 import java.text.DateFormatSymbols;
 
 /**
- * Represents a date that can be recognized by the program
+ * Represents a date that can be recognized by the program.
  */
 public class DukeDate {
     private String dateString;
 
     /**
-     * Creates a DukeDate object by taking in a string of format dd/mm/yyyy hhmm
+     * Creates a DukeDate object by taking in a string of format dd/mm/yyyy hhmm.
      * 
      * @param dateString a string of the format dd/mm/yyyy hhmm
      */
@@ -21,7 +21,7 @@ public class DukeDate {
         return new DateFormatSymbols().getMonths()[month - 1];
     }
 
-    public String getDate(int date) {
+    private String getDate(int date) {
         String output;
         switch (date % 10) {
         case 1:
@@ -62,7 +62,7 @@ public class DukeDate {
 
     /**
      * Returns the date object as a string object in the form (date of month year,
-     * hour min)
+     * hour min).
      */
     public String toString() {
         String[] dateComponent = dateString.split("/| ");

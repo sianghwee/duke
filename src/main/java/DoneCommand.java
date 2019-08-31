@@ -6,13 +6,13 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 /**
- * Represent a command to mark a task as done
+ * Represent a command to mark a task as done.
  */
 public class DoneCommand implements Command {
     private int index;
 
     /**
-     * Creates a command to mark the task specified as done
+     * Creates a command to mark the task specified as done.
      * 
      * @param index an integer value of the index of the task in the list
      */

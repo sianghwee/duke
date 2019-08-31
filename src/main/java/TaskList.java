@@ -10,7 +10,7 @@ public class TaskList {
     private ArrayList<Task> tasklist;
 
     /**
-     * Creates a tasklist object that contains all the tasks in an ArrayList
+     * Creates a tasklist object that contains all the tasks in an ArrayList.
      * 
      * @param list an ArrayList with all the tasks normally generated from the
      *             storage file
@@ -20,7 +20,7 @@ public class TaskList {
     }
 
     /**
-     * Returns the list of all the tasks within the tasklist
+     * Returns the list of all the tasks within the tasklist.
      * 
      * @return an ArrayList of all the tasks within the tasklist
      */
@@ -29,7 +29,7 @@ public class TaskList {
     }
 
     /**
-     * Adds a task to the tasklist
+     * Adds a task to the tasklist.
      * 
      * @param task the task to be added to the tasklist
      */
@@ -38,7 +38,7 @@ public class TaskList {
     }
 
     /**
-     * Removes a task from the tasklist based on its index and return that task
+     * Removes a task from the tasklist based on its index and return that task.
      * 
      * @param index an integer value of the index of the task to be removed
      * @return the task that was removed from the task list
@@ -48,7 +48,7 @@ public class TaskList {
     }
 
     /**
-     * Retrieves a task from the tasklist based on its index
+     * Retrieves a task from the tasklist based on its index.
      * 
      * @param index an integer value of the index of the task to be retrieved
      * @return the task that was specified
@@ -58,7 +58,7 @@ public class TaskList {
     }
 
     /**
-     * Returns the number of task within the task list
+     * Returns the number of task within the task list.
      * 
      * @return an integer value of the number of task within the list
      */
@@ -66,6 +66,11 @@ public class TaskList {
         return tasklist.size();
     }
 
+    /**
+     * Find tasks based on their description.
+     * 
+     * @param search the string to search for among the description
+     */
     public ArrayList<Task> find(String search) {
         ArrayList<Task> result = new ArrayList<>();
         for (Task t : tasklist) {

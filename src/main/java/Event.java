@@ -1,13 +1,13 @@
 package duke.task;
 
 /**
- * Represent an Event that can be added to the task list
+ * Represent an Event that can be added to the task list.
  */
 public class Event extends Task {
     private String time;
 
     /**
-     * Creates an event with the specified description and time
+     * Creates an event with the specified description and time.
      * 
      * @param description the description of the event
      * @param time        the time of the event either in plain text or dd/mm/yyyy

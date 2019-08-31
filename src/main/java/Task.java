@@ -2,7 +2,7 @@ package duke.task;
 
 /**
  * Represents the abstract class of Tasks which are used to represent different
- * tasks
+ * tasks.
  */
 public abstract class Task {
     private String description;
@@ -47,8 +47,9 @@ public abstract class Task {
      */
     public String toString() {
         String output = "[X]";
-        if (done)
+        if (done) {
             output = "[O]";
+        }
         return output + " " + this.description;
     }
 }

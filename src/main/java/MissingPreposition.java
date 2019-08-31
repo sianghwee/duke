@@ -2,7 +2,7 @@ package duke.exception;
 
 /**
  * An exception that is thrown when the a preposition is required but is not
- * given
+ * given.
  */
 public class MissingPreposition extends DukeException {
 
@@ -20,7 +20,7 @@ public class MissingPreposition extends DukeException {
     }
 
     /**
-     * Returns the message that is printed out when the excpetion is met
+     * Returns the message that is printed out when the excpetion is met.
      * 
      * @return a string representation that the command requires a preposition
      */

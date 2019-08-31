@@ -1,7 +1,7 @@
 package duke.exception;
 
 /**
- * An exception that is thrown when the description is invalid
+ * An exception that is thrown when the description is invalid.
  */
 public class InvalidDescription extends DukeException {
     private String command;
@@ -18,7 +18,7 @@ public class InvalidDescription extends DukeException {
     }
 
     /**
-     * Returns the message that is printed out when the excpetion is met
+     * Returns the message that is printed out when the excpetion is met.
      * 
      * @return a string representation that the description cannot be empty
      */

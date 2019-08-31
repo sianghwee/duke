@@ -18,11 +18,11 @@ import duke.task.Todo;
 
 /**
  * Represents a parser class that is able to parse the string commands into
- * actual commands
+ * actual commands.
  */
 public class Parser {
     /**
-     * Process a string command and return back a command object
+     * Process a string command and return back a command object.
      * 
      * @param fullCommand the full command that the user inputs in string
      * @return a command which could be executed

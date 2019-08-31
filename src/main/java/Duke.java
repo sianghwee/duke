@@ -1,3 +1,5 @@
+package duke.driver;
+
 import duke.command.Command;
 import duke.parser.Parser;
 import duke.storage.Storage;
@@ -5,7 +7,7 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 /**
- * Represents a instance of Duke which is the main driver of the program
+ * Represents a instance of Duke which is the main driver of the program.
  */
 public class Duke {
     private Storage storage;
@@ -24,7 +26,7 @@ public class Duke {
     }
 
     /**
-     * Runs the program
+     * Runs the program.
      */
     public void run() {
         ui.welcome();

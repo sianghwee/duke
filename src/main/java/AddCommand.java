@@ -6,13 +6,13 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 /**
- * Represent a command to add a task to the list
+ * Represent a command to add a task to the list.
  */
 public class AddCommand implements Command {
     private Task task;
 
     /**
-     * Creates a command to add the task specified in the parameter to the list
+     * Creates a command to add the task specified in the parameter to the list.
      * 
      * @param task the new task to be added
      */
