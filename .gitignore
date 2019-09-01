@@ -15,3 +15,6 @@ bin/
 
 # ignore class file created by users for testing purposes
 *.class
+
+# ignore database file created during testing
+/src/main/java/db/
