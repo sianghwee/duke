@@ -12,6 +12,16 @@ import duke.task.Task;
  * and the output from the program.
  */
 public class Ui {
+
+    private Scanner sc;
+
+    /**
+     * Creates a Ui object and initialize the scanner.
+     */
+    public Ui() {
+        sc = new Scanner(System.in);
+    }
+
     /**
      * Prints a horizontal line.
      */
@@ -51,7 +61,16 @@ public class Ui {
      * @return a string containing all the user's command
      */
     public String readCommand() {
-        return new Scanner(System.in).nextLine();
+        return sc.nextLine();
+    }
+
+    /**
+     * Checks if there is a next line for file inputs.
+     * 
+     * @return true if there is a next value, else false
+     */
+    public boolean hasNext() {
+        return sc.hasNext();
     }
 
     /**

@@ -31,7 +31,7 @@ public class Duke {
     public void run() {
         ui.welcome();
         String fullCommand;
-        while (!(fullCommand = ui.readCommand()).equals("bye")) {
+        while (ui.hasNext() && !(fullCommand = ui.readCommand()).equals("bye")) {
             ui.printLine();
             Command c = Parser.parse(fullCommand);
             c.execute(tasks, ui, storage);
