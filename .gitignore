@@ -17,4 +17,4 @@ bin/
 *.class
 
 # ignore database file created during testing
-/src/main/java/db/
+**/db
