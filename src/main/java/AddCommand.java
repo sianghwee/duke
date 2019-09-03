@@ -29,9 +29,9 @@ public class AddCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.addTask(task);
-        ui.addMessage(task, tasks);
         storage.write(tasks);
+        return ui.addMessage(task, tasks);
     }
 }

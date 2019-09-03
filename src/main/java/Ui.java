@@ -45,14 +45,16 @@ public class Ui {
      * 
      * @param db the tasklist which contains all the tasks
      */
-    public void printList(TaskList db) {
-        System.out.println("\t Here are the tasks in your list:");
+    public String printList(TaskList db) {
+        StringBuilder result = new StringBuilder();
+        result.append("\t Here are the tasks in your list:\n");
         int index = 1;
         for (Task task : db.getList()) {
-            String output = String.format("\t %d. %s", index, task.toString());
-            System.out.println(output);
+            String output = String.format("\t %d. %s\n", index, task.toString());
+            result.append(output);
             index++;
         }
+        return result.toString();
     }
 
     /**
@@ -79,10 +81,12 @@ public class Ui {
      * @param task the task that is deleted
      * @param db   the tasklist where the task is deleted from
      */
-    public void deleteMessage(Task task, TaskList db) {
-        System.out.println("\t Noted. I've removed this task:");
-        System.out.println("\t  " + task);
-        System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
+    public String deleteMessage(Task task, TaskList db) {
+        StringBuilder result = new StringBuilder();
+        result.append("\t Noted. I've removed this task:\n");
+        result.append("\t  " + task + "\n");
+        result.append(String.format("\t Now you have %d tasks in your list\n", db.size()));
+        return result.toString();
     }
 
     /**
@@ -90,10 +94,11 @@ public class Ui {
      * 
      * @param task the task that is to be mark as done
      */
-    public void updateMessage(Task task) {
-        System.out.print("\t ");
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println("\t  " + task.toString());
+    public String updateMessage(Task task) {
+        StringBuilder result = new StringBuilder();
+        result.append("\t Nice! I've marked this task as done:\n");
+        result.append("\t  " + task.toString());
+        return result.toString();
     }
 
     /**
@@ -102,10 +107,12 @@ public class Ui {
      * @param task the task that is to be added to the tasklist
      * @param db   the tasklist that contains all the tasks
      */
-    public void addMessage(Task task, TaskList db) {
-        System.out.println("\t Got it. I've added this task:");
-        System.out.println("\t  " + task);
-        System.out.println(String.format("\t Now you have %d tasks in your list", db.size()));
+    public String addMessage(Task task, TaskList db) {
+        StringBuilder result = new StringBuilder();
+        result.append("\t Got it. I've added this task:\n");
+        result.append("\t  " + task + "\n");
+        result.append(String.format("\t Now you have %d tasks in your list\n", db.size()));
+        return result.toString();
     }
 
     /**
@@ -113,17 +120,15 @@ public class Ui {
      * 
      * @param e the exception that is faced
      */
-    public void errorMessage(DukeException e) {
-        System.out.println("\t " + e.toString());
+    public String errorMessage(DukeException e) {
+        return ("\t " + e.toString() + "\n");
     }
 
     /**
      * Prints the bye message when the user leaves the program between two line.
      */
-    public void byeMessage() {
-        printLine();
-        System.out.println("\t Bye. Hope to see you again soon!");
-        printLine();
+    public String byeMessage() {
+        return ("\t Bye. Hope to see you again soon!");
     }
 
     /**
@@ -131,13 +136,15 @@ public class Ui {
      * 
      * @param db the list which the tasks are to be searched from
      */
-    public void searchMessage(ArrayList<Task> db) {
-        System.out.println("\t Here are the matching tasks in your list:");
+    public String searchMessage(ArrayList<Task> db) {
+        StringBuilder result = new StringBuilder();
+        result.append("\t Here are the matching tasks in your list:\n");
         int index = 1;
         for (Task task : db) {
-            String output = String.format("\t %d. %s", index, task.toString());
-            System.out.println(output);
+            String output = String.format("\t %d. %s\n", index, task.toString());
+            result.append(output);
             index++;
         }
+        return result.toString();
     }
 }

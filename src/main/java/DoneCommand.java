@@ -29,10 +29,10 @@ public class DoneCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Task t = tasks.getTask(index);
         t.doneTask();
-        ui.updateMessage(t);
         storage.write(tasks);
+        return ui.updateMessage(t);
     }
 }

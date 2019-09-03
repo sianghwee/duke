@@ -37,7 +37,6 @@ public class Duke extends Application {
     private Button sendButton;
     private Scene scene;
 
-//    private Image user = new Image("https://raw.githubusercontent.com/sianghwee/duke/master/tutorials/assets/DaUser.png");
     private Image user = new Image("https://raw.githubusercontent.com/sianghwee/duke/master/tutorials/assets/DaUser.png");
     private Image duke = new Image("https://raw.githubusercontent.com/sianghwee/duke/master/tutorials/assets/DaDuke.png");
 
@@ -161,6 +160,6 @@ public class Duke extends Application {
      * Replace this stub with your completed method.
      */
     private String getResponse(String input) {
-        return "Duke heard: " + input;
+        return Parser.parse(input).execute(tasks, ui, storage);
     }
 }

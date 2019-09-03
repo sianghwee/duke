@@ -11,7 +11,7 @@ public class FindCommand implements Command {
         this.search = search;
     }
 
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.searchMessage(tasks.find(search));
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return ui.searchMessage(tasks.find(search));
     }
 }

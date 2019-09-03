@@ -1,5 +1,5 @@
-import duke.driver.Duke;
 import javafx.application.Application;
+import duke.driver.Duke;
 
 /**
  * A launcher class to workaround classpath issues.
