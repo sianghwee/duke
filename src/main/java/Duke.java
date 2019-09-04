@@ -8,6 +8,7 @@ import duke.ui.Ui;
 import duke.ui.DialogBox;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,9 +20,6 @@ import javafx.stage.Stage;
 import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 /**
  * Represents a instance of Duke which is the main driver of the program.
@@ -63,7 +61,7 @@ public class Duke extends Application {
         while (ui.hasNext() && !(fullCommand = ui.readCommand()).equals("bye")) {
             ui.printLine();
             Command c = Parser.parse(fullCommand);
-            c.execute(tasks, ui, storage);
+            System.out.println(c.execute(tasks, ui, storage));
             ui.printLine();
         }
         ui.byeMessage();
@@ -73,7 +71,7 @@ public class Duke extends Application {
      * The main driver of the program. Takes in the file to be referenced as a
      * command line argument. If no file is given, then the default file "test.txt"
      * is used.
-     * 
+     *
      * @param args command line arguments that could include the filename of the
      *             file to be used
      */
@@ -104,7 +102,7 @@ public class Duke extends Application {
         stage.show();
 
         stage.setTitle("Duke");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
 
@@ -147,19 +145,24 @@ public class Duke extends Application {
 
     private void handleUserInput() {
         Label userText = new Label(userInput.getText());
-        Label dukeText = new Label(getResponse(userInput.getText()));
+        Command c = getResponse(userInput.getText());
+        Label dukeText = new Label(c.execute(tasks, ui, storage));
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(userText, new ImageView(user)),
                 DialogBox.getDukeDialog(dukeText, new ImageView(duke))
         );
         userInput.clear();
+
+        if(c.isExit()){
+            Platform.exit();
+        }
     }
 
     /**
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      */
-    private String getResponse(String input) {
-        return Parser.parse(input).execute(tasks, ui, storage);
+    private Command getResponse(String input) {
+        return Parser.parse(input);
     }
 }
