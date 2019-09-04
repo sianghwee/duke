@@ -47,7 +47,6 @@ public class Storage {
         } catch (IOException e) {
             System.out.println(e);
         }
-
         this.dbFile = dbFile;
     }
 

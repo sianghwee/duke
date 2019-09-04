@@ -21,9 +21,6 @@ import javafx.scene.layout.Region;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 /**
  * Represents a instance of Duke which is the main driver of the program.
  */
@@ -70,21 +67,21 @@ public class Duke extends Application {
         ui.byeMessage();
     }
 
-//    /**
-//     * The main driver of the program. Takes in the file to be referenced as a
-//     * command line argument. If no file is given, then the default file "test.txt"
-//     * is used.
-//     *
-//     * @param args command line arguments that could include the filename of the
-//     *             file to be used
-//     */
-//    public static void main(String[] args) {
-//        if (args.length == 0) {
-//            new Duke("test.txt").run();
-//        } else {
-//            new Duke(args[0]).run();
-//        }
-//    }
+    /**
+     * The main driver of the program. Takes in the file to be referenced as a
+     * command line argument. If no file is given, then the default file "test.txt"
+     * is used.
+     *
+     * @param args command line arguments that could include the filename of the
+     *             file to be used
+     */
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            new Duke("test.txt").run();
+        } else {
+            new Duke(args[0]).run();
+        }
+    }
 
     @Override
     public void start(Stage stage) {
@@ -105,7 +102,7 @@ public class Duke extends Application {
         stage.show();
 
         stage.setTitle("Duke");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setMinHeight(600.0);
         stage.setMinWidth(400.0);
 
