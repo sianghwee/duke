@@ -1,6 +1,7 @@
 package duke.parser;
 
 import duke.command.AddCommand;
+import duke.command.ByeCommand;
 import duke.command.Command;
 import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
@@ -61,6 +62,8 @@ public class Parser {
             case "find":
                 verifyDescription(split, 2);
                 return new FindCommand(split[1]);
+            case "bye":
+                return new ByeCommand();
             default:
                 throw new InvalidCommand();
             }
