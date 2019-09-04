@@ -17,4 +17,8 @@ public interface Command {
      * @param storage a storage object which will write to the file
      */
     public String execute(TaskList tasks, Ui ui, Storage storage);
+
+    public default boolean isExit() {
+        return false;
+    }
 }
