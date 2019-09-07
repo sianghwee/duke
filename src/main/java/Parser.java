@@ -33,6 +33,7 @@ public class Parser {
         String[] split = fullCommand.split(" ", 2);
         String[] desc;
         try {
+            assert split.length == 0 : "Empty command";
             switch (split[0]) {
             case "list":
                 return new ListCommand();
@@ -83,6 +84,7 @@ public class Parser {
             temp[1] = dd.toString();
             split[1] = String.join(" ", temp);
         }
+        assert split.length < 2 : "Split function incorrect";
         return split;
     }
 
