@@ -40,6 +40,8 @@ public class Storage {
             dbDir.mkdir();
         }
 
+        assert dbDir.exists() : "Directory missing";
+
         // Creates a new text file within the database directory if it does not exist
         File dbFile = new File(dbDir, filename);
         try {
