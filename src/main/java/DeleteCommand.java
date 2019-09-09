@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.exception.InvalidArgument;
 import duke.storage.Storage;
 import duke.task.Task;
 import duke.task.TaskList;
@@ -30,8 +31,12 @@ public class DeleteCommand implements Command {
      * @param storage a storage object which will write to the file
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        Task t = tasks.removeTask(index);
-        storage.write(tasks);
-        return ui.deleteMessage(t, tasks);
+        try {
+            Task t = tasks.removeTask(index);
+            storage.write(tasks);
+            return ui.deleteMessage(t, tasks);
+        } catch (IndexOutOfBoundsException e) {
+            return ui.errorMessage(new InvalidArgument());
+        }
     }
 }
