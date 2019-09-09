@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import duke.exception.DukeException;
 import duke.task.TaskList;
 import duke.task.Task;
+import duke.task.FindPair;
 
 /**
  * Represent the Ui object that is used for the user interaction i.e. the input
@@ -136,13 +137,16 @@ public class Ui {
      * 
      * @param db the list which the tasks are to be searched from
      */
-    public String searchMessage(ArrayList<Task> db) {
+    public String searchMessage(ArrayList<FindPair> db) {
         StringBuilder result = new StringBuilder();
         result.append("\t Here are the matching tasks in your list:\n");
         int index = 1;
-        for (Task task : db) {
-            String output = String.format("\t %d. %s\n", index, task.toString());
-            result.append(output);
+        for (FindPair temp : db) {
+            if(temp.isTrue()) {
+                Task task = temp.getTask();
+                String output = String.format("\t %d. %s\n", index, task.toString());
+                result.append(output);
+            }
             index++;
         }
         return result.toString();
