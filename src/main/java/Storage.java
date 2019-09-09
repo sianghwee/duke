@@ -36,6 +36,7 @@ public class Storage {
         // Creates a new directory to store all the files if it does not exist
         String dbDirPath = currDirPath + "/db";
         File dbDir = new File(dbDirPath);
+
         if (!dbDir.exists()) {
             dbDir.mkdir();
         }
@@ -61,23 +62,28 @@ public class Storage {
         ArrayList<Task> db = new ArrayList<>();
         try {
             BufferedReader readData = new BufferedReader(new FileReader(dbFile));
-            String input;
-            try {
-                while ((input = readData.readLine()) != null) {
-                    try {
-                        db.add(textToTask(input));
-                    } catch (DukeException e) {
-                        System.out.println(ui.errorMessage(e));
-                    }
-                }
-                readData.close();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
+            fillList(db, readData);
+            readData.close();
         } catch (FileNotFoundException e) {
             System.out.println(e);
+            db = new ArrayList<>();
+        } catch (IOException e) {
+            System.out.println(e);
+            db = new ArrayList<>();
         }
         return db;
+    }
+
+    private void fillList(ArrayList<Task> db, BufferedReader reader) throws IOException {
+        String input;
+        while ((input = reader.readLine()) != null) {
+            try {
+                db.add(textToTask(input));
+            } catch (DukeException e) {
+                // prints out to console if a data point is corrupted
+                System.out.println(ui.errorMessage(e));
+            }
+        }
     }
 
     /**
@@ -101,7 +107,7 @@ public class Storage {
 
     private static Task textToTask(String text) throws DukeException {
         String[] textComponent = text.split("\\|");
-        Task newTask = null;
+        Task newTask;
         switch (textComponent[0]) {
         case "T":
             newTask = new Todo(textComponent[2]);
