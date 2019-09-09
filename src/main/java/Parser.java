@@ -34,7 +34,7 @@ public class Parser {
         String[] desc;
         try {
             assert split.length == 0 : "Empty command";
-            switch (split[0]) {
+            switch (split[0].toLowerCase()) {
             case "list":
                 return new ListCommand();
             case "delete":
