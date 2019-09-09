@@ -2,15 +2,15 @@ package duke.task;
 
 public class FindPair {
     private Task task;
-    private boolean status;
+    private boolean found;
 
-    public FindPair(Task task, boolean status){
+    public FindPair(Task task, boolean found){
         this.task = task;
-        this.status = status;
+        this.found = found;
     }
 
-    public boolean isTrue(){
-        return this.status;
+    public boolean isFound(){
+        return this.found;
     }
 
     public Task getTask(){
