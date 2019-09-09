@@ -12,8 +12,6 @@ import duke.date.DukeDate;
 import duke.exception.DukeException;
 import duke.exception.InsufficientArgument;
 import duke.exception.InvalidCommand;
-import duke.exception.InvalidDescription;
-import duke.exception.MissingPreposition;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Todo;
@@ -34,21 +32,15 @@ public class Parser {
         String[] desc;
         try {
             assert split.length == 0 : "Empty command";
-            switch (split[0]) {
+            switch (split[0].toLowerCase()) {
             case "list":
                 return new ListCommand();
             case "delete":
-                try {
-                    return new DeleteCommand(Integer.parseInt(split[1]));
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new InsufficientArgument();
-                }
+                verifyDescription(split, 2);
+                return new DeleteCommand(Integer.parseInt(split[1]));
             case "done":
-                try {
-                    return new DoneCommand(Integer.parseInt(split[1]));
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    throw new InsufficientArgument();
-                }
+                verifyDescription(split, 2);
+                return new DoneCommand(Integer.parseInt(split[1]));
             case "todo":
                 verifyDescription(split, 2);
                 return new AddCommand(new Todo(split[1]));
@@ -78,19 +70,21 @@ public class Parser {
         if (split.length < 2) {
             throw new InsufficientArgument();
         }
+
         if (split[1].split(" |/").length == 5) {
             String[] temp = split[1].split(" ", 2);
             DukeDate dd = new DukeDate(temp[1]);
             temp[1] = dd.toString();
             split[1] = String.join(" ", temp);
         }
+
         assert split.length < 2 : "Split function incorrect";
         return split;
     }
 
-    private static void verifyDescription(String[] description, int size) throws InvalidDescription {
+    private static void verifyDescription(String[] description, int size) throws InsufficientArgument {
         if (description.length < size) {
-            throw new InvalidDescription(description[0]);
+            throw new InsufficientArgument();
         }
     }
 }

@@ -71,12 +71,16 @@ public class TaskList {
      * 
      * @param search the string to search for among the description
      */
-    public ArrayList<Task> find(String search) {
-        ArrayList<Task> result = new ArrayList<>();
+    public ArrayList<FindPair> find(String search) {
+        ArrayList<FindPair> result = new ArrayList<>();
         for (Task t : tasklist) {
+            FindPair temp;
             if (t.toString().contains(search)) {
-                result.add(t);
+                temp = new FindPair(t, true);
+            } else {
+                temp = new FindPair(t, false);
             }
+            result.add(temp);
         }
         return result;
     }

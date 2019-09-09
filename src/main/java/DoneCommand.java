@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.exception.InvalidArgument;
 import duke.storage.Storage;
 import duke.task.Task;
 import duke.task.TaskList;
@@ -30,9 +31,13 @@ public class DoneCommand implements Command {
      * @param storage a storage object which will write to the file
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        Task t = tasks.getTask(index);
-        t.doneTask();
-        storage.write(tasks);
-        return ui.updateMessage(t);
+        try {
+            Task t = tasks.getTask(index);
+            t.doneTask();
+            storage.write(tasks);
+            return ui.updateMessage(t);
+        } catch (IndexOutOfBoundsException e) {
+            return ui.errorMessage(new InvalidArgument());
+        }
     }
 }

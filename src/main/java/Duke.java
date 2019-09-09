@@ -53,7 +53,7 @@ public class Duke {
      */
     public static void main(String[] args) {
         if (args.length == 0) {
-            new Duke("test.txt").run();
+            new Duke().run();
         } else {
             new Duke(args[0]).run();
         }
