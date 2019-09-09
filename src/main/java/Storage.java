@@ -67,7 +67,7 @@ public class Storage {
                     try {
                         db.add(textToTask(input));
                     } catch (DukeException e) {
-                        ui.errorMessage(e);
+                        System.out.println(ui.errorMessage(e));
                     }
                 }
                 readData.close();
