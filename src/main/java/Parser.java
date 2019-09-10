@@ -31,7 +31,7 @@ public class Parser {
         String[] split = fullCommand.split(" ", 2);
         String[] desc;
         try {
-            assert split.length == 0 : "Empty command";
+            assert split.length != 0 : "Empty command";
             switch (split[0].toLowerCase()) {
             case "list":
                 return new ListCommand();
