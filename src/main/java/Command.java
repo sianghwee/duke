@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.exception.DukeException;
 import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
@@ -16,7 +17,7 @@ public interface Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public String execute(TaskList tasks, Ui ui, Storage storage);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
 
     public default boolean isExit() {
         return false;
