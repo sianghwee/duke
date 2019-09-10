@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.exception.DukeException;
 import duke.exception.InvalidArgument;
 import duke.storage.Storage;
 import duke.task.Task;
@@ -36,8 +37,8 @@ public class DoneCommand implements Command {
             t.doneTask();
             storage.write(tasks);
             return ui.updateMessage(t);
-        } catch (IndexOutOfBoundsException e) {
-            return ui.errorMessage(new InvalidArgument());
+        } catch (DukeException e) {
+            return ui.errorMessage(e);
         }
     }
 }
