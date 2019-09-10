@@ -45,7 +45,7 @@ public class TaskList {
      * @param index an integer value of the index of the task to be removed
      * @return the task that was removed from the task list
      */
-    public Task removeTask(int index) throws InvalidArgument{
+    public Task removeTask(int index) throws InvalidArgument {
         try {
             return tasklist.remove(index - 1);
         } catch (IndexOutOfBoundsException e) {

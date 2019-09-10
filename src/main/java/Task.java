@@ -5,7 +5,7 @@ package duke.task;
  * tasks.
  */
 public abstract class Task {
-    enum Priority{
+    enum Priority {
         HIGH, MEDIUM, LOW;
     }
 
@@ -62,17 +62,17 @@ public abstract class Task {
         output += "|";
 
         switch (priority) {
-            case LOW:
-                output += "L";
-                break;
-            case MEDIUM:
-                output += "M";
-                break;
-            case HIGH:
-                output += "H";
-                break;
-            default:
-                //no default as all cases are taken care of within the enum
+        case LOW:
+            output += "L";
+            break;
+        case MEDIUM:
+            output += "M";
+            break;
+        case HIGH:
+            output += "H";
+            break;
+        default:
+            //no default as all cases are taken care of within the enum
         }
 
         return output + "|" + this.description;
@@ -90,17 +90,17 @@ public abstract class Task {
         }
 
         switch (priority) {
-            case LOW:
-                output += "[L]";
-                break;
-            case MEDIUM:
-                output += "[M]";
-                break;
-            case HIGH:
-                output += "[H]";
-                break;
-            default:
-                //no default as all cases are taken care of within the enum
+        case LOW:
+            output += "[L]";
+            break;
+        case MEDIUM:
+            output += "[M]";
+            break;
+        case HIGH:
+            output += "[H]";
+            break;
+        default:
+            //no default as all cases are taken care of within the enum
         }
         return output + " " + this.description;
     }

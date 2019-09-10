@@ -125,12 +125,12 @@ public class Storage {
             newTask.doneTask();
         }
 
-        switch(textComponent[2]) {
-            case "L": newTask.setLowPriority();
-                break;
-            case "H": newTask.setHighPriority();
-                break;
-            default: newTask.setMedPriority();
+        switch (textComponent[2]) {
+        case "L": newTask.setLowPriority();
+            break;
+        case "H": newTask.setHighPriority();
+            break;
+        default: newTask.setMedPriority();
         }
         return newTask;
     }

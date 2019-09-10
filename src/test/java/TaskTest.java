@@ -9,6 +9,6 @@ public class TaskTest {
     public void testDone() {
         Task test = new Todo("test");
         test.doneTask();
-        assertEquals("[T][O] test", test.toString());
+        assertEquals("[T][O][M] test", test.toString());
     }
 }

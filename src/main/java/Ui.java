@@ -152,6 +152,11 @@ public class Ui {
         return result.toString();
     }
 
+    /**
+     * Prints the message when a task priority is updated.
+     * @param task the task that has its priority updated
+     * @return a string representation of the message to be printed
+     */
     public String updatePriorityMessage(Task task) {
         StringBuilder result = new StringBuilder();
         result.append(String.format("\t Nice! I've marked this task as %s priority:\n", task.getPriority()));
