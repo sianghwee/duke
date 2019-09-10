@@ -1,5 +1,6 @@
 package duke.command;
 
+import duke.exception.DukeException;
 import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
@@ -18,7 +19,7 @@ public class ListCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         return ui.printList(tasks);
     }
 }

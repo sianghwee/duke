@@ -25,28 +25,23 @@ public class PriorityCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
-        try {
-            Task t = tasks.getTask(index);
-            switch (priority.toLowerCase()) {
-            case "high":
-                t.setHighPriority();
-                break;
-            case "medium":
-                t.setMedPriority();
-                break;
-            case "low":
-                t.setLowPriority();
-                break;
-            default:
-                throw new InvalidArgument();
-            }
-
-            storage.write(tasks);
-            return ui.updatePriorityMessage(t);
-
-        } catch (DukeException e) {
-            return ui.errorMessage(e);
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+        Task t = tasks.getTask(index);
+        switch (priority.toLowerCase()) {
+        case "high":
+            t.setHighPriority();
+            break;
+        case "medium":
+            t.setMedPriority();
+            break;
+        case "low":
+            t.setLowPriority();
+            break;
+        default:
+            throw new InvalidArgument();
         }
+
+        storage.write(tasks);
+        return ui.updatePriorityMessage(t);
     }
 }

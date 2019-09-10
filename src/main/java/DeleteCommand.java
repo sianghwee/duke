@@ -30,13 +30,9 @@ public class DeleteCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      */
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
-        try {
-            Task t = tasks.removeTask(index);
-            storage.write(tasks);
-            return ui.deleteMessage(t, tasks);
-        } catch (DukeException e) {
-            return ui.errorMessage(e);
-        }
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
+        Task t = tasks.removeTask(index);
+        storage.write(tasks);
+        return ui.deleteMessage(t, tasks);
     }
 }

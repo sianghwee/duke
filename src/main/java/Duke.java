@@ -1,6 +1,7 @@
 package duke.driver;
 
 import duke.command.Command;
+import duke.exception.DukeException;
 import duke.parser.Parser;
 import duke.storage.Storage;
 import duke.task.TaskList;
@@ -38,8 +39,12 @@ public class Duke {
         String fullCommand;
         while (ui.hasNext() && !(fullCommand = ui.readCommand()).equals("bye")) {
             ui.printLine();
-            Command c = Parser.parse(fullCommand);
-            System.out.println(c.execute(tasks, ui, storage));
+            try {
+                Command c = Parser.parse(fullCommand);
+                System.out.println(c.execute(tasks, ui, storage));
+            } catch (DukeException e) {
+                ui.errorMessage(e);
+            }
             ui.printLine();
         }
         ui.byeMessage();
@@ -66,7 +71,11 @@ public class Duke {
      * Replace this stub with your completed method.
      */
     public String getResponse(String input) {
-        Command c = Parser.parse(input);
-        return c.execute(tasks, ui, storage);
+        try {
+            Command c = Parser.parse(input);
+            return c.execute(tasks, ui, storage);
+        } catch (DukeException e) {
+            return ui.errorMessage(e);
+        }
     }
 }

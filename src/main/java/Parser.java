@@ -5,7 +5,6 @@ import duke.command.ByeCommand;
 import duke.command.Command;
 import duke.command.DeleteCommand;
 import duke.command.DoneCommand;
-import duke.command.ErrorCommand;
 import duke.command.FindCommand;
 import duke.command.ListCommand;
 import duke.command.PriorityCommand;
@@ -28,45 +27,42 @@ public class Parser {
      * @param fullCommand the full command that the user inputs in string
      * @return a command which could be executed
      */
-    public static Command parse(String fullCommand) {
+    public static Command parse(String fullCommand) throws DukeException {
         String[] split = fullCommand.split(" ", 2);
         String[] desc;
-        try {
-            assert split.length != 0 : "Empty command";
-            switch (split[0].toLowerCase()) {
-            case "list":
-                return new ListCommand();
-            case "delete":
-                verifyDescription(split, 2);
-                return new DeleteCommand(Integer.parseInt(split[1]));
-            case "done":
-                verifyDescription(split, 2);
-                return new DoneCommand(Integer.parseInt(split[1]));
-            case "todo":
-                verifyDescription(split, 2);
-                return new AddCommand(new Todo(split[1]));
-            case "event":
-                verifyDescription(split, 2);
-                desc = splitDescription(split[1]);
-                return new AddCommand(new Event(desc[0], desc[1]));
-            case "deadline":
-                verifyDescription(split, 2);
-                desc = splitDescription(split[1]);
-                return new AddCommand(new Deadline(desc[0], desc[1]));
-            case "find":
-                verifyDescription(split, 2);
-                return new FindCommand(split[1]);
-            case "priority":
-                verifyDescription(split, 2);
-                desc = splitDescription(split[1]);
-                return new PriorityCommand(Integer.parseInt(desc[0].strip()), desc[1]);
-            case "bye":
-                return new ByeCommand();
-            default:
-                throw new InvalidCommand();
-            }
-        } catch (DukeException e) {
-            return new ErrorCommand(e);
+
+        assert split.length != 0 : "Empty command";
+        switch (split[0].toLowerCase()) {
+        case "list":
+            return new ListCommand();
+        case "delete":
+            verifyDescription(split, 2);
+            return new DeleteCommand(Integer.parseInt(split[1]));
+        case "done":
+            verifyDescription(split, 2);
+            return new DoneCommand(Integer.parseInt(split[1]));
+        case "todo":
+            verifyDescription(split, 2);
+            return new AddCommand(new Todo(split[1]));
+        case "event":
+            verifyDescription(split, 2);
+            desc = splitDescription(split[1]);
+            return new AddCommand(new Event(desc[0], desc[1]));
+        case "deadline":
+            verifyDescription(split, 2);
+            desc = splitDescription(split[1]);
+            return new AddCommand(new Deadline(desc[0], desc[1]));
+        case "find":
+            verifyDescription(split, 2);
+            return new FindCommand(split[1]);
+        case "priority":
+            verifyDescription(split, 2);
+            desc = splitDescription(split[1]);
+            return new PriorityCommand(Integer.parseInt(desc[0].strip()), desc[1]);
+        case "bye":
+            return new ByeCommand();
+        default:
+            throw new InvalidCommand();
         }
     }
 
