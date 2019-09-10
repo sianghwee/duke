@@ -34,6 +34,8 @@ public class ParserTest {
 
     @Test
     public void testErrorCommand() throws DukeException {
-        assertThrows(DukeException.class, () -> {Parser.parse("hi"); });
+        assertThrows(DukeException.class, () -> {
+            Parser.parse("hi");
+        });
     }
 }
