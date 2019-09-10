@@ -55,6 +55,22 @@ public abstract class Task {
         if (done) {
             output = "1";
         }
+        output += "|";
+
+        switch (priority) {
+            case LOW:
+                output += "L";
+                break;
+            case MEDIUM:
+                output += "M";
+                break;
+            case HIGH:
+                output += "H";
+                break;
+            default:
+                //no default as all cases are taken care of within the enum
+        }
+
         return output + "|" + this.description;
     }
 
