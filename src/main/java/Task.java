@@ -44,6 +44,10 @@ public abstract class Task {
         this.priority = Priority.MEDIUM;
     }
 
+    public Priority getPriority() {
+        return this.priority;
+    }
+
     /**
      * Converts the task object to a text format. Allows the object to be saved more
      * easily in a text file.
