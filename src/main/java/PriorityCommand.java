@@ -7,26 +7,20 @@ import duke.task.Task;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
-/**
- * Represent a command to mark a task as done.
- */
-public class DoneCommand implements Command {
+public class PriorityCommand implements Command {
     private int index;
+    private String priority;
 
-    /**
-     * Creates a command to mark the task specified as done.
-     * 
-     * @param index an integer value of the index of the task in the list
-     */
-    public DoneCommand(int index) {
+    public PriorityCommand(int index, String priority) {
         this.index = index;
+        this.priority = priority;
     }
 
     /**
-     * Execute the command and mark the task as done. Takes in a tasklist to which
-     * the task will be mark as done, a ui which will output the message and a
+     * Execute the command and update the task priority. Takes in a tasklist to which
+     * the task will be updated, a ui which will output the message and a
      * storage which updates the task in the file
-     * 
+     *
      * @param tasks   a tasklist containing all the existing tasks
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
@@ -34,9 +28,23 @@ public class DoneCommand implements Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) {
         try {
             Task t = tasks.getTask(index);
-            t.doneTask();
+            switch (priority.toLowerCase()) {
+            case "high":
+                t.setHighPriority();
+                break;
+            case "medium":
+                t.setMedPriority();
+                break;
+            case "low":
+                t.setLowPriority();
+                break;
+            default:
+                throw new InvalidArgument();
+            }
+
             storage.write(tasks);
-            return ui.updateMessage(t);
+            return ui.updatePriorityMessage(t);
+
         } catch (DukeException e) {
             return ui.errorMessage(e);
         }

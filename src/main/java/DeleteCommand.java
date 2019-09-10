@@ -1,6 +1,6 @@
 package duke.command;
 
-import duke.exception.InvalidArgument;
+import duke.exception.DukeException;
 import duke.storage.Storage;
 import duke.task.Task;
 import duke.task.TaskList;
@@ -35,8 +35,8 @@ public class DeleteCommand implements Command {
             Task t = tasks.removeTask(index);
             storage.write(tasks);
             return ui.deleteMessage(t, tasks);
-        } catch (IndexOutOfBoundsException e) {
-            return ui.errorMessage(new InvalidArgument());
+        } catch (DukeException e) {
+            return ui.errorMessage(e);
         }
     }
 }

@@ -8,6 +8,7 @@ import duke.command.DoneCommand;
 import duke.command.ErrorCommand;
 import duke.command.FindCommand;
 import duke.command.ListCommand;
+import duke.command.PriorityCommand;
 import duke.date.DukeDate;
 import duke.exception.DukeException;
 import duke.exception.InsufficientArgument;
@@ -55,6 +56,10 @@ public class Parser {
             case "find":
                 verifyDescription(split, 2);
                 return new FindCommand(split[1]);
+            case "priority":
+                verifyDescription(split, 2);
+                desc = splitDescription(split[1]);
+                return new PriorityCommand(Integer.parseInt(desc[0].strip()), desc[1]);
             case "bye":
                 return new ByeCommand();
             default:
