@@ -5,8 +5,13 @@ package duke.task;
  * tasks.
  */
 public abstract class Task {
+    enum Priority{
+        HIGH, MEDIUM, LOW;
+    }
+
     private String description;
     private boolean done;
+    private Priority priority;
 
     /**
      * Creates a task object with the supplied description. By default, the task is
@@ -17,6 +22,7 @@ public abstract class Task {
     public Task(String description) {
         this.description = description;
         this.done = false;
+        this.priority = Priority.MEDIUM;
     }
 
     /**
@@ -24,6 +30,18 @@ public abstract class Task {
      */
     public void doneTask() {
         this.done = true;
+    }
+
+    public void setHighPriority() {
+        this.priority = Priority.HIGH;
+    }
+
+    public void setLowPriority() {
+        this.priority = Priority.LOW;
+    }
+
+    public void setMedPriority() {
+        this.priority = Priority.MEDIUM;
     }
 
     /**
@@ -49,6 +67,20 @@ public abstract class Task {
         String output = "[X]";
         if (done) {
             output = "[O]";
+        }
+
+        switch (priority) {
+            case LOW:
+                output += "[L]";
+                break;
+            case MEDIUM:
+                output += "[M]";
+                break;
+            case HIGH:
+                output += "[H]";
+                break;
+            default:
+                //no default as all cases are taken care of within the enum
         }
         return output + " " + this.description;
     }
