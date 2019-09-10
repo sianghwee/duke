@@ -110,19 +110,27 @@ public class Storage {
         Task newTask;
         switch (textComponent[0]) {
         case "T":
-            newTask = new Todo(textComponent[2]);
+            newTask = new Todo(textComponent[3]);
             break;
         case "D":
-            newTask = new Deadline(textComponent[2], textComponent[3]);
+            newTask = new Deadline(textComponent[3], textComponent[4]);
             break;
         case "E":
-            newTask = new Event(textComponent[2], textComponent[3]);
+            newTask = new Event(textComponent[3], textComponent[4]);
             break;
         default:
             throw new CorruptedData(text);
         }
         if (textComponent[1].equals("1")) {
             newTask.doneTask();
+        }
+
+        switch(textComponent[2]) {
+            case "L": newTask.setLowPriority();
+                break;
+            case "H": newTask.setHighPriority();
+                break;
+            default: newTask.setMedPriority();
         }
         return newTask;
     }
