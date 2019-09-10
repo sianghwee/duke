@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/sianghwee/duke.svg?branch=master)](https://travis-ci.com/sianghwee/duke)
+
 # Setting up
 
 **Prerequisites**
