@@ -17,11 +17,13 @@ public class Duke {
     public Duke() {
         this("test.txt");
     }
+
     /**
      * Creates the Duke object which has a db file tagged to it.
      * 
      * @param filename the filename of the file to be referenced to
      */
+
     public Duke(String filename) {
         ui = new Ui();
         storage = new Storage(filename);

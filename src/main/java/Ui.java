@@ -142,7 +142,7 @@ public class Ui {
         result.append("\t Here are the matching tasks in your list:\n");
         int index = 1;
         for (FindPair temp : db) {
-            if(temp.isFound()) {
+            if (temp.isFound()) {
                 Task task = temp.getTask();
                 String output = String.format("\t %d. %s\n", index, task.toString());
                 result.append(output);
