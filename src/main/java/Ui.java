@@ -47,7 +47,7 @@ public class Ui {
      * @param db the tasklist which contains all the tasks
      */
     public String printList(TaskList db) {
-        if(db.size() == 0) {
+        if (db.size() == 0) {
             return "\t You have no tasks in your list.";
         }
         StringBuilder result = new StringBuilder();
