@@ -13,7 +13,7 @@ public class ByeCommand implements Command {
      * @param ui      a ui which will output the message
      * @param storage a storage object which will write to the file
      * @return a string with the message when the program finishes
-     * @throws DukeException throws any DukeException that it might face
+     * @throws DukeException
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         return ui.byeMessage();
