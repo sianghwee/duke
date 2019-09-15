@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.exception.DukeException;
 import duke.exception.MissingPreposition;
 
 /**
@@ -16,7 +17,7 @@ public class Event extends Task {
      *                    hhmm
      * @throws MissingPreposition if time does not contain a preposition at
      */
-    public Event(String description, String time) throws MissingPreposition {
+    public Event(String description, String time) throws DukeException {
         super(description);
         String[] temp = time.split(" ", 2);
         try {

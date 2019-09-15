@@ -1,5 +1,6 @@
 package duke.task;
 
+import duke.exception.DukeException;
 import duke.exception.MissingPreposition;
 
 /**
@@ -17,7 +18,7 @@ public class Deadline extends Task {
      * @param deadline    the time in which the task needs to be completed
      * @throws MissingPreposition if time does not contain a preposition by
      */
-    public Deadline(String description, String deadline) throws MissingPreposition {
+    public Deadline(String description, String deadline) throws DukeException {
         super(description);
         String[] temp = deadline.split(" ", 2);
         try {

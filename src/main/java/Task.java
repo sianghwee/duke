@@ -1,5 +1,7 @@
 package duke.task;
 
+import duke.exception.InvalidDescription;
+
 /**
  * Represents the abstract class of Tasks which are used to represent different
  * tasks.
@@ -19,8 +21,11 @@ public abstract class Task {
      * 
      * @param description string representation of the task
      */
-    public Task(String description) {
-        this.description = description;
+    public Task(String description) throws InvalidDescription {
+        this.description = description.strip();
+        if (this.description.length() == 0) {
+            throw new InvalidDescription(this.getClass().getName());
+        }
         this.done = false;
         this.priority = Priority.MEDIUM;
     }
@@ -72,7 +77,7 @@ public abstract class Task {
             output += "H";
             break;
         default:
-            //no default as all cases are taken care of within the enum
+            // no default as all cases are taken care of within the enum
         }
 
         return output + "|" + this.description;
@@ -100,7 +105,7 @@ public abstract class Task {
             output += "[H]";
             break;
         default:
-            //no default as all cases are taken care of within the enum
+            // no default as all cases are taken care of within the enum
         }
         return output + " " + this.description;
     }
