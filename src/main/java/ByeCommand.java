@@ -6,10 +6,24 @@ import duke.task.TaskList;
 import duke.ui.Ui;
 
 public class ByeCommand implements Command {
+    /**
+     * Leaves the program upon execution.
+     * 
+     * @param tasks   a tasklist containing all the existing tasks
+     * @param ui      a ui which will output the message
+     * @param storage a storage object which will write to the file
+     * @return a string with the message when the program finishes
+     * @throws DukeException
+     */
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException {
         return ui.byeMessage();
     }
 
+    /**
+     * Method to verify if it is an exit command.
+     * 
+     * @return a boolean value that returns true
+     */
     @Override
     public boolean isExit() {
         return true;

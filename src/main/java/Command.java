@@ -19,6 +19,12 @@ public interface Command {
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) throws DukeException;
 
+    /**
+     * A default method to check if a command is an exit command. By default, it
+     * returns false as most of the commands are not exit command.
+     * 
+     * @return a boolean value of false
+     */
     public default boolean isExit() {
         return false;
     }
