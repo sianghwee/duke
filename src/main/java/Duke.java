@@ -35,13 +35,13 @@ public class Duke {
      * Runs the program.
      */
     public void run() {
-        ui.welcome();
+        ui.print(ui.welcome());
         String fullCommand;
         while (ui.hasNext() && !(fullCommand = ui.readCommand()).equals("bye")) {
             ui.printLine();
             try {
                 Command c = Parser.parse(fullCommand);
-                System.out.println(c.execute(tasks, ui, storage));
+                ui.print(c.execute(tasks, ui, storage));
             } catch (DukeException e) {
                 ui.errorMessage(e);
             }
