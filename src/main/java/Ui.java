@@ -34,11 +34,8 @@ public class Ui {
     /**
      * Prints the welcome message between two horizontal lines.
      */
-    public void welcome() {
-        this.printLine();
-        System.out.println("\t Hello, I'm Duke!");
-        System.out.println("\t What can I do for you?");
-        this.printLine();
+    public String welcome() {
+        return ("\t Hello, I'm Duke!\n\t What can I do for you?");
     }
 
     /**
@@ -157,6 +154,7 @@ public class Ui {
 
     /**
      * Prints the message when a task priority is updated.
+     * 
      * @param task the task that has its priority updated
      * @return a string representation of the message to be printed
      */
@@ -165,5 +163,9 @@ public class Ui {
         result.append(String.format("\t Nice! I've marked this task as %s priority:\n", task.getPriority()));
         result.append("\t  " + task.toString());
         return result.toString();
+    }
+
+    public void print(String message) {
+        System.out.println(message);
     }
 }
