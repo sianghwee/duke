@@ -14,6 +14,7 @@ public class Duke {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+    private boolean exit;
 
     public Duke() {
         this("test.txt");
@@ -29,6 +30,7 @@ public class Duke {
         ui = new Ui();
         storage = new Storage(filename);
         tasks = new TaskList(storage.load());
+        this.exit = false;
     }
 
     /**
@@ -73,9 +75,14 @@ public class Duke {
     public String getResponse(String input) {
         try {
             Command c = Parser.parse(input);
+            this.exit = c.isExit();
             return c.execute(tasks, ui, storage);
         } catch (DukeException e) {
             return ui.errorMessage(e);
         }
+    }
+
+    public boolean isExit() {
+        return this.exit;
     }
 }
