@@ -1,5 +1,7 @@
 # User Guide
 
+![](Ui.png)
+
 ## Features 
 
 ### Feature 1 
