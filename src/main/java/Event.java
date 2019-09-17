@@ -44,6 +44,6 @@ public class Event extends Task {
      * @return a string representing the object
      */
     public String toString() {
-        return "[E]" + super.toString() + String.format("(%s)", this.time);
+        return "[E]" + super.toString() + String.format(" (%s)", this.time);
     }
 }

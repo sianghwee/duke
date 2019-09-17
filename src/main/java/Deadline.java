@@ -45,6 +45,6 @@ public class Deadline extends Task {
      * @return a string representing the object
      */
     public String toString() {
-        return "[D]" + super.toString() + String.format("(%s)", this.deadline);
+        return "[D]" + super.toString() + String.format(" (%s)", this.deadline);
     }
 }
