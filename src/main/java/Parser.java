@@ -73,10 +73,14 @@ public class Parser {
         }
 
         if (split[1].split(" |/").length == 5) {
-            String[] temp = split[1].split(" ", 2);
-            DukeDate dd = new DukeDate(temp[1]);
-            temp[1] = dd.toString();
-            split[1] = String.join(" ", temp);
+            try {
+                String[] temp = split[1].split(" ", 2);
+                DukeDate dd = new DukeDate(temp[1]);
+                temp[1] = dd.toString();
+                split[1] = String.join(" ", temp);
+            } catch (Exception e) {
+                System.err.println("Incorrect date format");
+            }
         }
 
         assert split.length < 2 : "Split function incorrect";
