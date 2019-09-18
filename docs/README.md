@@ -57,4 +57,22 @@ Expected outcome:
 
 `A list of all the tasks`
 
-<img src="list.PNG" width="500">
+<img src="list.PNG" width="400">
+
+### `todo` - add a todo event to the list
+
+Adds a todo event to the list and output the event if it is successfully added.
+
+Example of usage: 
+
+`todo run for 30mins`
+
+Expected outcome:
+
+```
+Got it. I've added this task:  
+  [T][X][M] run for 30mins 
+Now you have # tasks in your list
+```
+
+<img src="todo.PNG" width="400">
