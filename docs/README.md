@@ -55,7 +55,12 @@ Example of usage:
 
 Expected outcome:
 
-`A list of all the tasks`
+```
+Here are the tasks in your list:
+1. [T][O][L] eat vitamins
+2. [D][X][H] finish iP (by: 22nd of September 2019, 12.00pm)
+3. [E][X][H] CS2101 group meeting (at: tmr 2pm)
+```
 
 <img src="list.PNG" width="400">
 
