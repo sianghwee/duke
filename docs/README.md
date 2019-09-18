@@ -64,7 +64,7 @@ Here are the tasks in your list:
 
 <img src="list.PNG" width="400">
 
-### `todo` - add a todo task to the list
+### `todo <description>` - add a todo task to the list
 
 Adds a todo task to the list and output the task if it is successfully added.
 
@@ -82,7 +82,7 @@ Now you have # tasks in your list
 
 <img src="todo.PNG" width="400">
 
-### `deadline` - add a deadline task to the list
+### `deadline <description> /by <date>` - add a deadline task to the list
 
 Adds a deadline task to the list and output the task if it is successfully added.
 
@@ -99,3 +99,55 @@ Now you have # tasks in your list
 ```
 
 <img src="deadline.PNG" width="400">
+
+### `event <description> /at <date>` - add a event task to the list
+
+Adds a event task to the list and output the task if it is successfully added.
+
+Example of usage: 
+
+`event formal dinner /at tmr 7pm`
+
+Expected outcome:
+
+```
+Got it. I've added this task:  
+  [E][X][M] formal dinner (at: tmr 7pm)
+Now you have # tasks in your list
+```
+
+<img src="event.PNG" width="400">
+
+### `done <index>` - mark a task as done
+
+Mark the task at the index as done. To retrieve the index, you can use the list command.
+
+Example of usage: 
+
+`done 4`
+
+Expected outcome:
+
+```
+Nice! I've marked this task as done:
+  [T][O][M] run for 30mins
+```
+
+<img src="done.PNG" width="400">
+
+### `priority <index> /<level>` - change the priority of the task
+
+Change the priority of the task at the index. To retrieve the index, you can use the list command.
+
+Example of usage: 
+
+`priority 5 /high`
+
+Expected outcome:
+
+```
+Nice! I've marked this task as HIGH priority:
+  [D][X][H] finish user guide (by: 20th of September 2019, 12.00pm)
+```
+
+<img src="priority.PNG" width="400">
