@@ -54,6 +54,7 @@ Example of usage:
 `list`
 
 Expected outcome:
+
 `A list of all the tasks`
 
-<img src="list.PNG" width="300">
+<img src="list.PNG" width="500">
