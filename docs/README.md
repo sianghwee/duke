@@ -45,14 +45,15 @@ a task is deleted, the index of all the task after it is moved up.
 
 ## Usage
 
-### `Keyword` - Describe action
+### `list` - list all the tasks currently
 
-Describe action and its outcome.
+List all the task that is currently in the list. If there are no tasks in the list, Duke will output that there is no task in the list.
 
 Example of usage: 
 
-`keyword (optional arguments)`
+`list`
 
 Expected outcome:
+`A list of all the tasks`
 
-`outcome`
+<img src="list.PNG" width="300">
