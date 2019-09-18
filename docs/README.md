@@ -64,9 +64,9 @@ Here are the tasks in your list:
 
 <img src="list.PNG" width="400">
 
-### `todo` - add a todo event to the list
+### `todo` - add a todo task to the list
 
-Adds a todo event to the list and output the event if it is successfully added.
+Adds a todo task to the list and output the task if it is successfully added.
 
 Example of usage: 
 
@@ -81,3 +81,21 @@ Now you have # tasks in your list
 ```
 
 <img src="todo.PNG" width="400">
+
+### `deadline` - add a deadline task to the list
+
+Adds a deadline task to the list and output the task if it is successfully added.
+
+Example of usage: 
+
+`deadline finish user guide /by 20/09/2019 1200`
+
+Expected outcome:
+
+```
+Got it. I've added this task:  
+  [D][X][M] finish user guide (by: 20th of September 2019, 12.00pm)
+Now you have # tasks in your list
+```
+
+<img src="deadline.PNG" width="400">
