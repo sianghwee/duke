@@ -153,3 +153,54 @@ Nice! I've marked this task as HIGH priority:
 ```
 
 <img src="priority.PNG" width="400">
+
+### `find <description>` - find a task
+
+Finds a task based on words within the description.
+
+Example of usage: 
+
+`find meeting`
+
+Expected outcome:
+
+```
+Here are the matching tasks in your list:
+3. [E][X][H] CS2101 group meeting (at: tmr 2pm)
+```
+
+<img src="find.PNG" width="400">
+
+### `delete <index>` - delete a task
+
+Deletes a task based on the index of the task.
+
+Example of usage: 
+
+`delete 4`
+
+Expected outcome:
+
+```
+Noted. I've removed this task:
+  [T][X][M] run for 30mins
+Now you have # tasks in your list.
+```
+
+<img src="delete.PNG" width="400">
+
+### `bye` - exits the program
+
+Display the bye message of the program. On pressing the exit button or the enter key again, the program exits.
+
+Example of usage: 
+
+`bye`
+
+Expected outcome:
+
+```
+Bye. Hope to see you again soon!
+```
+
+<img src="bye.PNG" width="400">
