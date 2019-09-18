@@ -84,7 +84,8 @@ Now you have # tasks in your list
 
 ### `deadline <description> /by <date>` - add a deadline task to the list
 
-Adds a deadline task to the list and output the task if it is successfully added.
+Adds a deadline task to the list and output the task if it is successfully added. The date can be in the form <DD/MM/YY HHMM>
+or it can be a string representation of a date (e.g. tmr 1pm, midnight on Monday).
 
 Example of usage: 
 
@@ -102,7 +103,8 @@ Now you have # tasks in your list
 
 ### `event <description> /at <date>` - add a event task to the list
 
-Adds a event task to the list and output the task if it is successfully added.
+Adds a event task to the list and output the task if it is successfully added. The date can be in the form <DD/MM/YY HHMM>
+or it can be a string representation of a date (e.g. tmr 1pm, midnight on Monday).
 
 Example of usage: 
 
