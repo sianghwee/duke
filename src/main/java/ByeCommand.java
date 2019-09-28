@@ -5,6 +5,9 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 import duke.ui.Ui;
 
+/**
+ * Represent a command to exit the program.
+ */
 public class ByeCommand implements Command {
     /**
      * Leaves the program upon execution.

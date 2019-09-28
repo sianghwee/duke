@@ -37,18 +37,32 @@ public abstract class Task {
         this.done = true;
     }
 
+    /**
+     * Sets the priority of a task to high.
+     */
     public void setHighPriority() {
         this.priority = Priority.HIGH;
     }
 
+    /**
+     * Sets the priority of a task to low.
+     */
     public void setLowPriority() {
         this.priority = Priority.LOW;
     }
 
+    /**
+     * Sets the priority of a task to medium.
+     */
     public void setMedPriority() {
         this.priority = Priority.MEDIUM;
     }
 
+    /**
+     * Get the priority of a task.
+     * 
+     * @return the priority of the task.
+     */
     public Priority getPriority() {
         return this.priority;
     }

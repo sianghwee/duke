@@ -50,6 +50,14 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
+    /**
+     * Outputs the dialog box for the user's input.
+     * 
+     * @param text a string representation of the user's input
+     * @param img  a image to represent the user
+     * @return a dialog box where the image is on the right and the response on the
+     *         left
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }

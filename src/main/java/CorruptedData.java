@@ -1,5 +1,8 @@
 package duke.exception;
 
+/**
+ * Creates a class to show that a data within the safe file is corrupted.
+ */
 public class CorruptedData extends DukeException {
     private String data;
 

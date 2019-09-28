@@ -69,8 +69,11 @@ public class Duke {
     }
 
     /**
-     * You should have your own function to generate a response to user input.
-     * Replace this stub with your completed method.
+     * Takes in a user input and returns a string representation of the response
+     * after executing the input.
+     * 
+     * @param input a string representing the input of the user
+     * @return a string representing the response of Duke
      */
     public String getResponse(String input) {
         try {
@@ -82,6 +85,12 @@ public class Duke {
         }
     }
 
+    /**
+     * Return the exit state of the program. If true, means the user has issued the
+     * command to end the program. Else, the program will keep running.
+     * 
+     * @return a boolean value of the exit state of the program.
+     */
     public boolean isExit() {
         return this.exit;
     }
