@@ -24,7 +24,7 @@ public abstract class Task {
     public Task(String description) throws InvalidDescription {
         this.description = description.strip();
         if (this.description.length() == 0) {
-            throw new InvalidDescription(this.getClass().getName());
+            throw new InvalidDescription(this.getClass().getSimpleName());
         }
         this.done = false;
         this.priority = Priority.MEDIUM;
